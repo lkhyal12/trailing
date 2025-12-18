@@ -5,3 +5,41 @@ body {
 main {
   min-height: calc(100dvh - 72px);
 }
+.logo {
+  width: clamp(100px, 13vw, 150px);
+}
+.home {
+  background-image: url("./assets/images/bg2.jpg");
+  height: 100dvh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.homeTitle {
+  font-size: clamp(35px, 4vw, 55px);
+  padding-left: 50px;
+  margin-bottom: 20px;
+}
+.movieCard {
+  width: calc((100vw - 40px) / 5);
+  padding: 20px;
+}
+.moviesContainer {
+  transition: transform 0.6s ease-in-out;
+}
+@media (max-width: 996px) {
+  .movieCard {
+    width: calc((100vw - 40px) / 4);
+  }
+}
+@media (max-width: 796px) {
+  .movieCard {
+    width: calc((100vw - 40px) / 3);
+  }
+}
+
+@media (max-width: 596px) {
+  .movieCard {
+    width: calc((100vw - 40px) / 2);
+  }
+}
