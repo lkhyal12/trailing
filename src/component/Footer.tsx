@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <footer className="h-18 bg-gray-800 flex  items-center justify-center text-white">
+    <footer className="h-18 bg-black flex  items-center justify-center text-white">
       {" "}
-      copyright 2025
+      <p className="text-white/90">© 2025 ceneTrailers. All rights reserved.</p>
     </footer>
   );
 };

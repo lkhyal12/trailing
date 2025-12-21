@@ -4,6 +4,7 @@ import Footer from "./component/Footer";
 
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
+import Movies from "./pages/Movies";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <main className="bg-black pt-18 flex-1 w-screen">
           <Routes>
             <Route element={<Home></Home>} path="/" />
+            <Route element={<Movies />} path="/movies" />
           </Routes>
         </main>
 
