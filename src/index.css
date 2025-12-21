@@ -8,6 +8,11 @@ main {
 .logo {
   width: clamp(100px, 13vw, 150px);
 }
+.navLink.active {
+  text-decoration: underline;
+  color: white;
+  text-underline-offset: 4px;
+}
 .home {
   background-image: url("./assets/images/bg2.jpg");
   height: 100dvh;

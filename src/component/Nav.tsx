@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 interface LinkType {
   href: string;
@@ -23,7 +23,7 @@ const navLinks: Array<LinkType> = [
     id: 3,
   },
   {
-    href: "popular",
+    href: "/popular-movies",
     name: "Popular",
     id: 4,
   },
@@ -39,13 +39,14 @@ const Nav = () => {
 
             <div className="flex items-center gap-5">
               {navLinks.map((link) => (
-                <Link
+                <NavLink
                   key={link.id}
                   to={link.href}
-                  className="text-white/80 font-medium text-lg hover:text-white"
+                  className="navLink text-white/80 font-medium text-lg hover:text-white"
+                  end={true}
                 >
                   {link.name}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </div>
