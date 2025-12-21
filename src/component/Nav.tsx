@@ -8,7 +8,7 @@ interface LinkType {
 }
 const navLinks: Array<LinkType> = [
   {
-    href: "home",
+    href: "/",
     name: "Home",
     id: 1,
   },

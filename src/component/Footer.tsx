@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="h-18 bg-black flex  items-center justify-center text-white">
+    <footer className="h-18 bg-gray-950 flex  items-center pl-5 text-white">
       {" "}
       <p className="text-white/90">© 2025 ceneTrailers. All rights reserved.</p>
     </footer>
