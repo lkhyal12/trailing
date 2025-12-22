@@ -12,6 +12,7 @@ const Movies = () => {
     Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1
   );
   const [movies, setMovies] = useState<Movie[]>([]);
+  console.log(movies);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<null | string>(null);
   useEffect(() => {

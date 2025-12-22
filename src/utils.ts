@@ -50,3 +50,45 @@ export async function fetchMedia<T>(url: string): Promise<T[] | string> {
     return "Something went wrong";
   }
 }
+
+// debounce function
+
+export function debounce(cb: Function, duration: number = 500): Function {
+  let timer: number;
+  return (...args: []) => {
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      console.log(args);
+      cb(...args);
+    }, duration);
+  };
+}
+
+export type GenreType = {
+  id: number;
+  name: string;
+};
+
+export async function fetchGenres(url: string) {
+  try {
+    const res = await fetch(url, options);
+    const data = await res.json();
+    return data.genres;
+  } catch (e) {
+    return null;
+  }
+}
+
+export function generateGenres(
+  genreIds: number[],
+  genres: GenreType[]
+): string[] {
+  let genresArr: string[] = [];
+  for (let gId of genreIds) {
+    for (let g of genres) {
+      if (g.id === gId) genresArr.push(g.name);
+    }
+  }
+  return genresArr;
+}
