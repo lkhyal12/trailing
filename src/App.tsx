@@ -9,6 +9,7 @@ import TvSeries from "./pages/TvSeries";
 import PopularLayout from "./pages/popular/PopularLayout";
 import PopularMovies from "./pages/popular/PopularMovies";
 import PopularShows from "./pages/popular/PopularShows";
+import ResultPage from "./pages/ResultPage";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
               <Route path="/popular-movies" element={<PopularMovies />} />
               <Route path="/popular-shows" element={<PopularShows />} />
             </Route>
+            <Route path="/result" element={<ResultPage />} />
           </Routes>
         </main>
 

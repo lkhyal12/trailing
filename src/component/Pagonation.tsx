@@ -14,7 +14,10 @@ const Pagonation = ({
     <div className="flex items-center gap-2 justify-center">
       <div
         className={currentPage === 1 ? "cursor-not-allowed" : "cursor-pointer"}
-        onClick={() => setCurrentPage((p) => p - 1)}
+        onClick={() => {
+          if (currentPage === 1) return;
+          setCurrentPage((p) => p - 1);
+        }}
       >
         <ChevronLeft
           color={currentPage == 1 ? "rgba(255, 255, 255, 0.15)" : "white"}
@@ -34,7 +37,10 @@ const Pagonation = ({
         className={
           currentPage === totalPages ? "cursor-not-allowed" : "cursor-pointer"
         }
-        onClick={() => setCurrentPage((p) => p + 1)}
+        onClick={() => {
+          if (currentPage === totalPages) return;
+          setCurrentPage((p) => p + 1);
+        }}
       >
         <ChevronRight
           color={

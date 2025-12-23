@@ -4,6 +4,7 @@ import logo from "../assets/images/logo.png";
 import {
   debounce,
   fetchGenres,
+  fetchSearchMovies,
   generateGenres,
   type GenreType,
   getPosterUrl,
@@ -44,29 +45,12 @@ const navLinks: Array<LinkType> = [
   },
 ];
 
-async function fetchMovies(
-  query: string,
-  setMovies: React.Dispatch<React.SetStateAction<any>>,
-  setError: React.Dispatch<React.SetStateAction<string>>
-) {
-  const url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
-    query
-  )}&page=1`;
-  try {
-    const res = await fetch(url, options);
-    const data = await res.json();
-    console.log(data);
-    setMovies(data.results.slice(0, 5));
-  } catch (e) {
-    if (e instanceof Error) setError(e.message);
-  }
-}
 const debounceFun = debounce(
   (
     searchTerm: string,
     setMovies: React.Dispatch<React.SetStateAction<any>>,
     setError: React.Dispatch<React.SetStateAction<string>>
-  ) => fetchMovies(searchTerm, setMovies, setError)
+  ) => fetchSearchMovies(searchTerm, setMovies, setError, false, 1)
 );
 
 const Nav = () => {
@@ -116,6 +100,7 @@ const Nav = () => {
                 <SearchContainer
                   movies={movies}
                   setSearchTerm={setSearchTerm}
+                  searchTerm={searchTerm}
                 />
               )}
             </div>
@@ -131,9 +116,11 @@ const Nav = () => {
 function SearchContainer({
   movies,
   setSearchTerm,
+  searchTerm,
 }: {
   movies: any;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  searchTerm: string;
 }) {
   const [genres, setGenres] = useState<Array<GenreType>>([]);
   useEffect(() => {
@@ -153,12 +140,19 @@ function SearchContainer({
             movie={m}
             genres={genres}
             setSearchTerm={setSearchTerm}
+            key={m.id}
           />
         ))}
       </div>
-      <div className="bg-blue-700 flex items-center justify-center text-white py-2 font-medium rounded-lg">
+      <Link
+        onClick={() => {
+          setSearchTerm("");
+        }}
+        to={`/result?query=${searchTerm}`}
+        className="bg-blue-700 flex items-center justify-center text-white py-2 font-medium rounded-lg"
+      >
         View All Results <ChevronRight size={20} />
-      </div>
+      </Link>
     </div>
   );
 }

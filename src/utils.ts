@@ -92,3 +92,23 @@ export function generateGenres(
   }
   return genresArr;
 }
+
+export async function fetchSearchMovies(
+  query: string,
+  setMovies: React.Dispatch<React.SetStateAction<any>>,
+  setError: React.Dispatch<React.SetStateAction<string>>,
+  isResultPage: boolean,
+  currentPage: number
+) {
+  const url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
+    query
+  )}&page=${currentPage}`;
+  try {
+    const res = await fetch(url, options);
+    const data = await res.json();
+    if (!isResultPage) setMovies(data.results.slice(0, 5));
+    return data;
+  } catch (e) {
+    if (e instanceof Error) setError(e.message);
+  }
+}
